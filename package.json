@@ -1,0 +1,42 @@
+{
+  "name": "plumbing-toolkit-core",
+  "version": "0.0.1",
+  "description": "Core library of the Plumbing Toolkit",
+  "browser": "dist/es5-commonjs/index.js",
+  "module": "dist/es5-esm/index.js",
+  "main": "dist/es2015-commonjs/index.js",
+  "es2015": "dist/es2015-esm/index.js",
+  "esnext": "dist/esnext/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "build-es5-commonjs": "npm run build -- --target es5 --module commonjs --outDir dist/es5-commonjs",
+    "build-es5-esm": "npm run build -- --target es5 --module es6 --outDir dist/es5-esm",
+    "build-es2015-commonjs": "npm run build",
+    "build-es2015-esm": "npm run build -- --target es2015 --module es6 --outDir dist/es2015-esm",
+    "build-esnext": "npm run build -- --target esnext --module esnext --outDir dist/esnext",
+    "build-all": "rm -rf dist && (npm run build-es5-commonjs & npm run build-es5-esm & npm run build-es2015-commonjs & npm run build-es2015-esm & npm run build-esnext)",
+    "watch": "npm run build -- --watch",
+    "docs": "rm -rf docs && ./node_modules/.bin/typedoc --name async-flow --readme README.md --module commonjs --target ES5 --excludeExternals --out docs --theme default src/ && touch docs/.nojekyll",
+    "deploy": "npm run build-all && npm publish",
+    "test": "./node_modules/.bin/ts-node test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IZEDx/plumbing-toolkit-core.git"
+  },
+  "author": "Niklas Kühtmann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IZEDx/plumbing-toolkit-core/issues"
+  },
+  "homepage": "https://github.com/IZEDx/plumbing-toolkit-core#readme",
+  "devDependencies": {
+    "ts-node": "^6.1.1",
+    "typedoc": "^0.10.0",
+    "typescript": "^3.0.0-dev.20180602"
+  },
+  "dependencies": {
+    "@types/node": "^8.10.18"
+  }
+}
