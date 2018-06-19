@@ -1,6 +1,6 @@
 {
   "name": "plumbing-toolkit-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Core library of the Plumbing Toolkit",
   "browser": "dist/es5-commonjs/index.js",
   "module": "dist/es5-esm/index.js",
