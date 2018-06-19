@@ -35,6 +35,14 @@ export class Sink<T> implements ISink<T> {
         });
     }
 
+    static suppresReturn<T>(sink: Sink<T>): Sink<T> {
+        return new Sink<T>({
+            next: val => sink.next(val),
+            return: () => {},
+            throw: err => sink.throw(err)
+        });
+    }
+
     next(value: T): MaybePromise<void> {
         if (!this._completed && !this._plucked) {
             return this.sink.next(value);
