@@ -69,6 +69,3 @@ export class Sink<T> implements ISink<T> {
         }
     }
 }
-
-export const to = Sink.to;
-export const throughTo = Sink.throughTo;

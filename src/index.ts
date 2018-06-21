@@ -1,24 +1,19 @@
 
-function polyfillSymbol(name: string) {
-    if (Symbol[name] === undefined) (<any>Symbol)[name] = Symbol.for(name);
-}
-
-export function polyfillAsyncIterator() {
-    polyfillSymbol("asyncIterator");
-}
-
+const polyfillSymbol = (name: string): symbol => Symbol[name] !== undefined ? Symbol[name] : ((<any>Symbol)[name] = Symbol.for(name));
+const polyfillAsyncIterator = () => polyfillSymbol("asyncIterator");
 polyfillAsyncIterator();
 
+export type Optional<T> = { [P in keyof T]?: T[P] }
 export type MaybePromise<T> = Promise<T>|T;
-export async function maybeAwait<T>(mp: MaybePromise<T>) {
-    return mp instanceof Promise ? await mp : mp;
-}
+export const maybeAwait = async <T>(mp: MaybePromise<T>) => mp instanceof Promise ? await mp : mp;
 
-export type Optional<T> = { 
-    [P in keyof T]?: T[P] 
-}
 
 export * from "./sink";
 export * from "./pipe";
 export * from "./tank";
 export * from "./pressure";
+
+export * from "./tools";
+export * from "./springs";
+export * from "./filters";
+export * from "./transformators";
