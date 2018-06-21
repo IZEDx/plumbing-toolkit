@@ -19,7 +19,7 @@
     "watch": "npm run build -- --watch",
     "docs": "rm -rf docs && ./node_modules/.bin/typedoc --name async-flow --readme README.md --module commonjs --target ES5 --excludeExternals --out docs --theme default src/ && touch docs/.nojekyll",
     "deploy": "npm run build-all && npm publish",
-    "test": "./node_modules/.bin/ts-node test.ts"
+    "test": "mocha -r ts-node/register ./**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,10 @@
   },
   "homepage": "https://github.com/IZEDx/plumbing-toolkit#readme",
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.3",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
     "ts-node": "^6.1.1",
     "typedoc": "^0.10.0",
     "typescript": "^3.0.0-dev.20180602"
