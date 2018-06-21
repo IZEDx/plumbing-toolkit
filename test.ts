@@ -1,4 +1,4 @@
-import { pipe, fibonacci, to } from "./src";
+import { pipe, fibonacci, map, filter, to } from "./src";
 
 /*
 function fetch(): Operator<string, string> {
@@ -12,7 +12,7 @@ function fetch(): Operator<string, string> {
     });
 }*/
 
-pipe( fibonacci(1000) )
-    //.pipe( filter(i => i % 2 == 0) )
-    //.pipe( map(i => i + 1) )
+pipe( fibonacci(50) )
+    .pipe( filter(i => i % 2 == 0) )
+    .pipe( map(i => i + 1) )
     .pipe( to(console.log) );

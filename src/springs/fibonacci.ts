@@ -4,7 +4,7 @@ export function fibonacci(steps?: number): Spring<number> {
     return pump(fibonacciGenerator(steps)); 
 }
 
-async function* fibonacciGenerator(steps?: number) {
+function* fibonacciGenerator(steps?: number) {
     let lastn = 0;
     let n = 1;
 
