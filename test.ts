@@ -1,4 +1,4 @@
-import { pipe, Pipe, fibonacci, map, filter, to } from "./src";
+import { pipe, Pipe, fibonacci, map, filter, to, Operator } from "./src";
 
 /*
 function fetch(): Operator<string, string> {
@@ -13,9 +13,8 @@ function fetch(): Operator<string, string> {
 }*/
 
 
-const halveEven = (input: Pipe<number>) => input
-    .pipe( filter(i => i % 2 == 0) )
-    .pipe( map(i => i / 2) )
+const halveEven : (input: Pipe<number>) => Pipe<number>
+                = input => input.pipe( filter(i => i % 2 == 0) ).pipe( map(i => i / 2) );
 
 pipe( fibonacci(50) )
     .pipe( halveEven )
