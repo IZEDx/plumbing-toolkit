@@ -1,4 +1,4 @@
-import { pipe, Pipe, fibonacci, map, filter, to, Operator } from "./src";
+import { pipe, Pipe, fibonacci, map, filter, to } from "./src";
 
 /*
 function fetch(): Operator<string, string> {
