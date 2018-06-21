@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IZEDx/plumbing-toolkit-core.git"
+    "url": "git+https://github.com/IZEDx/plumbing-toolkit.git"
   },
   "author": "Niklas Kühtmann",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IZEDx/plumbing-toolkit-core/issues"
+    "url": "https://github.com/IZEDx/plumbing-toolkit/issues"
   },
-  "homepage": "https://github.com/IZEDx/plumbing-toolkit-core#readme",
+  "homepage": "https://github.com/IZEDx/plumbing-toolkit#readme",
   "devDependencies": {
     "ts-node": "^6.1.1",
     "typedoc": "^0.10.0",
