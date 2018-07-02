@@ -13,6 +13,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "declaration": true,
         "declarationDir": "types",
+        "downlevelIteration": true,
         "lib": [
             "dom",
             "esnext"
