@@ -18,7 +18,7 @@
             "dom",
             "esnext"
         ],
-        "outDir": "dist/es2015-commonjs"
+        "outDir": "dist/commonjs"
     },
     "exclude": [
         "node_modules",
