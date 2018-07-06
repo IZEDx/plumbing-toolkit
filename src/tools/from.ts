@@ -1,10 +1,12 @@
 import { Sink, Spring, immediate } from "..";
 
-function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T> {
+function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T>
+{
     return ai[Symbol.asyncIterator] != undefined;
 }
 
-export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T> {
+export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
+{
     return (sink: Sink<T>) => {
         (async () => {
             try {
@@ -30,6 +32,7 @@ export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T> {
     }
 }
 
-export function pump<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T> {
+export function pump<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
+{
     return from(i);
 }
