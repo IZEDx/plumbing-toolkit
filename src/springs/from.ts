@@ -5,6 +5,10 @@ function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T>
     return ai[Symbol.asyncIterator] != undefined;
 }
 
+/**
+ * Creates a [Spring] from [i]
+ * @param i 
+ */
 export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
 {
     return (sink: Sink<T>) => {
@@ -32,6 +36,10 @@ export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
     }
 }
 
+/**
+ * Alias for [from]
+ * @param i 
+ */
 export function pump<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
 {
     return from(i);

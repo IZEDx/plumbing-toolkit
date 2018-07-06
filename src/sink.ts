@@ -19,10 +19,8 @@ export class Sink<T> implements ISink<T> {
     }
 
     
-    static to<T>(fn: (value: T) => void): Sink<T> {
-        return new Sink({
-            next: value => fn(value)
-        });
+    static to<T>(next: (value: T) => void, err?: (err: Error) => void): Sink<T> {
+        return new Sink({ next, throw: err });
     }
 
     static throughTo<T, K>(fn: (value: T, sink: Sink<K>) => void, sink: Sink<K>): Sink<T> {
