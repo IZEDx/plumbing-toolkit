@@ -8,3 +8,4 @@ export function through<T, K>(fn: OperatorFn<T, K>): Operator<T, K>
         return pipe( sink => input.flush( Sink.throughTo(fn, sink) ) );
     }
 }
+
