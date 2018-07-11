@@ -15,7 +15,7 @@
     "build-es2015-commonjs": "npm run build",
     "build-es2015-esm": "npm run build -- --target es2015 --module es6 --outDir dist/es2015-esm",
     "build-esnext": "npm run build -- --target esnext --module esnext --outDir dist/esnext",
-    "build-all": "rm -rf dist && (npm run build-es5-commonjs & npm run build-es5-esm & npm run build-es2015-commonjs & npm run build-es2015-esm & npm run build-esnext)",
+    "build-all": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
     "watch": "npm run build -- --watch",
     "docs": "rm -rf docs && ./node_modules/.bin/typedoc --name async-flow --readme README.md --module commonjs --target ES5 --excludeExternals --out docs --theme default src/ && touch docs/.nojekyll",
     "deploy": "npm run build-all && npm publish",
