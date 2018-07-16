@@ -2,7 +2,7 @@
 import { Sink } from ".";
 import { collect, collector, ConsumerFn, to, toEach, first, last, forEach, OperatorFn, through } from "./tools";
 import { MappingFn, map, FlatMappingFn, flatMap } from "./transformators";
-import { PredicateFn, filter } from "./filters";
+import { PredicateFn, filter, Constructable, is } from "./filters";
 
 export type Pluck = () => any;
 export type Spring<T> = (sink: Sink<T>) => Pluck;
@@ -46,5 +46,6 @@ export class Pipe<T> {
     flatMap = <K>(m: FlatMappingFn<T, K>) => this.pipe(flatMap(m));
 
     filter = (p: PredicateFn<T>) => this.pipe(filter(p));
+    is = (c: Constructable<T>) => this.pipe(is(c));
 
 }
