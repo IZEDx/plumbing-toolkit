@@ -46,6 +46,6 @@ export class Pipe<T> {
     flatMap = <K>(m: FlatMappingFn<T, K>) => this.pipe(flatMap(m));
 
     filter = (p: PredicateFn<T>) => this.pipe(filter(p));
-    is = (c: Constructable<T>) => this.pipe(is(c));
+    is = <K extends T = T>(c: Constructable<K>) => this.pipe(is(c));
 
 }
