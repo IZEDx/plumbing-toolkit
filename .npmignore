@@ -11,3 +11,4 @@ ts-node-*/
 .cache/
 .nyc_output
 src/
+./**/*.map
