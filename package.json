@@ -1,6 +1,6 @@
 {
   "name": "plumbing-toolkit",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "",
   "browser": "dist/es5-commonjs/index.js",
   "module": "dist/es5-esm/index.js",
