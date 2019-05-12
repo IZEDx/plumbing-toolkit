@@ -1,4 +1,4 @@
-import { MaybePromise } from ".";
+import { MaybePromise } from "./utils";
 
 export interface ISink<T> {
     next(value: T): MaybePromise<void>;
@@ -33,7 +33,7 @@ export class Sink<T> implements ISink<T> {
         });
     }
 
-    static suppresReturn<T>(sink: Sink<T>): Sink<T> {
+    static suppressReturn<T>(sink: Sink<T>): Sink<T> {
         return new Sink<T>({
             next: val => sink.next(val),
             return: () => {},

@@ -1,5 +1,5 @@
-
-import { Sink, Optional } from ".";
+import { Optional } from "./utils";
+import { Sink } from "./sink";
 
 // TODO: pluck correctly
 export class Tank<T> extends Sink<T> {

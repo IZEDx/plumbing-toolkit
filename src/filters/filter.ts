@@ -1,4 +1,5 @@
-import { MaybePromise, maybeAwait, through } from "..";
+import { MaybePromise, maybeAwait } from "../utils";
+import { through } from "../tools";
 
 export type PredicateFn<T> = (x: T) => MaybePromise<boolean>;
 

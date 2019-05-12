@@ -1,8 +1,8 @@
 
-import { Sink } from ".";
 import { collect, collector, ConsumerFn, to, toEach, first, last, forEach, OperatorFn, through } from "./tools";
 import { MappingFn, map, FlatMappingFn, flatMap } from "./transformators";
 import { PredicateFn, filter, Constructable, is } from "./filters";
+import { Sink } from "./sink";
 
 export type Pluck = () => any;
 export type Spring<T> = (sink: Sink<T>) => Pluck;

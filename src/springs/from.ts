@@ -1,4 +1,6 @@
-import { Sink, Spring, immediate } from "..";
+import { Sink } from "../sink";
+import { immediate } from "../pressure";
+import { Spring } from "../pipe";
 
 function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T>
 {

@@ -1,4 +1,5 @@
-import { Spring, pump } from "..";
+import { pump } from "./from";
+import { Spring } from "../pipe";
 
 /**
  * Creates a [Spring], that emits the fibonacci sequence for the given [iterations]

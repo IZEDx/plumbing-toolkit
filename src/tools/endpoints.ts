@@ -1,5 +1,7 @@
-
-import { Sink, MaybePromise, Tank, Pluck, Operator, Pipe } from "..";
+import { MaybePromise } from "../utils";
+import { Operator, Pluck, Pipe } from "../pipe";
+import { Tank } from "../tank";
+import { Sink } from "../sink";
 
 export type ConsumerFn<T> = (value: T) => MaybePromise<any>;
 

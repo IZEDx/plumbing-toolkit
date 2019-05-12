@@ -1,7 +1,7 @@
-import { Operator } from "..";
+
 import { forEach } from "./forEach";
 import { map } from "../transformators";
-import { pipe } from "../pipe";
+import { pipe, Operator } from "../pipe";
 
 
 export function deltaTime<T>(): Operator<T, [T, number]>

@@ -1,4 +1,5 @@
-import { Spring, Sink } from "..";
+import { Sink } from "../sink";
+import { Spring } from "../pipe";
 
 export function interval(ms: number): Spring<number> {
     return (sink: Sink<number>) => {

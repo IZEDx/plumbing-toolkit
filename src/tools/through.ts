@@ -1,4 +1,6 @@
-import { Sink, MaybePromise, Operator, pipe } from "..";
+import { Sink } from "../sink";
+import { MaybePromise } from "../utils";
+import { Operator, pipe } from "../pipe";
 
 export type OperatorFn<T, K> =  (value: T, sink: Sink<K>) => MaybePromise<void>;
 

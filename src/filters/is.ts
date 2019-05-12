@@ -1,4 +1,4 @@
-import { through } from "..";
+import { through } from "../tools";
 
 export interface Constructable<T>
 {

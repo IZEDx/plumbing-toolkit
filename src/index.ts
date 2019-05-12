@@ -3,11 +3,7 @@ const polyfillSymbol = (name: string): symbol => Symbol[name] !== undefined ? Sy
 const polyfillAsyncIterator = () => polyfillSymbol("asyncIterator");
 polyfillAsyncIterator();
 
-export type Optional<T> = { [P in keyof T]?: T[P] }
-export type MaybePromise<T> = Promise<T>|T;
-export const maybeAwait = async <T>(mp: MaybePromise<T>) => mp instanceof Promise ? await mp : mp;
-
-
+export * from "./utils";
 export * from "./sink";
 export * from "./pipe";
 export * from "./tank";

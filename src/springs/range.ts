@@ -1,4 +1,5 @@
-import { Spring, pump } from "..";
+import { pump } from "./from";
+import { Spring } from "../pipe";
 
 export function range(from: number, to?: number, step = 1): Spring<number> {
     return pump(rangeGenerator(from, to, step)); 
