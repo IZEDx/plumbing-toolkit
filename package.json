@@ -17,7 +17,6 @@
     "build-esnext": "npm run build -- --target esnext --module esnext --outDir dist/esnext",
     "build-all": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
     "watch": "npm run build -- --watch",
-    "docs": "rm -rf docs && ./node_modules/.bin/typedoc --name async-flow --readme README.md --module commonjs --target ES5 --excludeExternals --out docs --theme default src/ && touch docs/.nojekyll",
     "deploy": "npm run build-all && npm publish",
     "test": "mocha -r ts-node/register ./**/*.spec.ts"
   },
@@ -32,15 +31,14 @@
   },
   "homepage": "https://github.com/IZEDx/plumbing-toolkit#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.3",
-    "chai": "^4.1.2",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "ts-node": "^6.1.1",
-    "typedoc": "^0.10.0",
-    "typescript": "^3.0.0-dev.20180602"
+    "ts-node": "^6.2.0",
+    "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@types/node": "^8.10.18"
+    "@types/node": "^8.10.48"
   }
 }
