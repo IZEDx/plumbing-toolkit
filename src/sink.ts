@@ -5,6 +5,7 @@ export interface ISink<T> {
     throw?(error: Error): MaybePromise<void>;
     return?(): MaybePromise<void>;
     pluck?(): MaybePromise<void>;
+    plucked?: boolean;
 }
 
 export class Sink<T> implements ISink<T> {
@@ -12,7 +13,6 @@ export class Sink<T> implements ISink<T> {
     private _completed = false;
 
     get plucked() { return this._plucked; }
-    set plucked(pluck: boolean) { this._plucked = pluck; }
     get completed() { return this._completed; }
     
     constructor(private sink: ISink<T>) {
@@ -62,7 +62,7 @@ export class Sink<T> implements ISink<T> {
 
     pluck() {
         this._plucked = true;
-        if (this.sink.pluck) {
+        if (this.sink.pluck && !this.sink.plucked) {
             return this.sink.pluck();
         }
     }

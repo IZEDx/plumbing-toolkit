@@ -27,7 +27,11 @@ export class Pipe<T> {
     }
 
     flush(sink: Sink<T>) {
-        return this._spring(sink);
+        const pluck = this._spring(sink);
+        return () => {
+            sink.pluck();
+            pluck();
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
