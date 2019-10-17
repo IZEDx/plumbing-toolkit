@@ -21,7 +21,8 @@
     "build": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
     "watch": "npx tsc-- --watch",
     "deploy": "npm run build && npm publish",
-    "test": "npx mocha -r ts-node/register ./**/*.spec.ts"
+    "test": "npx mocha -r ts-node/register ./**/*.spec.ts",
+    "docs": "npx typedoc --out docs src"
   },
   "baseUrl": ".",
   "paths": {
@@ -48,6 +49,7 @@
     "pegjs": "^0.10.0",
     "ts-node": "^8.4.1",
     "ts-pegjs": "^0.2.6",
+    "typedoc": "^0.15.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {

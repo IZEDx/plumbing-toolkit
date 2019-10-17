@@ -1,0 +1,336 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>plumbing-toolkit</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">plumbing-toolkit</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> plumbing-toolkit</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#plumbing-toolkit" id="plumbing-toolkit" style="color: inherit; text-decoration: none;">
+					<h1>Plumbing Toolkit</h1>
+				</a>
+				<p><a href="https://travis-ci.org/IZEDx/plumbing-toolkit"><img src="https://travis-ci.org/IZEDx/plumbing-toolkit.svg?branch=master" alt="Build Status"></a>
+				<a href="https://badge.fury.io/js/plumbing-toolkit"><img src="https://badge.fury.io/js/plumbing-toolkit.svg" alt="npm version"></a></p>
+				<a href="#pluggable-and-pluckable-typesafe-asynchronous-streams" id="pluggable-and-pluckable-typesafe-asynchronous-streams" style="color: inherit; text-decoration: none;">
+					<h3>Pluggable and pluckable typesafe asynchronous streams.</h3>
+				</a>
+				<a href="#a-modular-observable-approach-using-plumber-terminology-to-better-conceptualize-the-data-flow" id="a-modular-observable-approach-using-plumber-terminology-to-better-conceptualize-the-data-flow" style="color: inherit; text-decoration: none;">
+					<h3>A modular observable approach using plumber terminology to better conceptualize the data flow.</h3>
+				</a>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">let</span> c = <span class="hljs-number">0</span>;
+pipe(fibonacci(<span class="hljs-number">20</span>))
+    .pipe( context(<span class="hljs-number">0</span>) )
+    .pipe( forEach(_ =&gt; _.context++) )
+    .pipe( filter(_ =&gt; _.value % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) )
+    .pipe( map(_ =&gt; <span class="hljs-string">`<span class="hljs-subst">${p.context}</span>: <span class="hljs-subst">${p.value}</span>`</span>) )
+    .pipe( consume(<span class="hljs-built_in">console</span>.log) );</code></pre>
+				<p>Prints out</p>
+				<pre><code><span class="hljs-number">3</span>: <span class="hljs-number">2</span>
+<span class="hljs-number">6</span>: <span class="hljs-number">8</span>
+<span class="hljs-number">9</span>: <span class="hljs-number">34</span>
+<span class="hljs-number">12</span>: <span class="hljs-number">144</span>
+<span class="hljs-number">15</span>: <span class="hljs-number">610</span>
+<span class="hljs-number">18</span>: <span class="hljs-number">2584</span></code></pre><p>There is also a chaining method, so this example could also be written as</p>
+				<pre><code class="language-TypeScript">pipe(fibonacci(<span class="hljs-number">20</span>)).chain(
+    context(<span class="hljs-number">0</span>),
+    forEach(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.context++),
+    filter(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.value % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>),
+    map(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${p.context}</span>: <span class="hljs-subst">${p.value}</span>`</span>),
+    consume(<span class="hljs-built_in">console</span>.log)
+)</code></pre>
+				<p>The chain method is also typed for up to 42 arguments, if that&#39;s not enough then it&#39;s also possible to chain the chains.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Simply via npm</p>
+				<pre><code>$ npm <span class="hljs-selector-tag">i</span> plumbing-toolkit</code></pre>
+				<a href="#concepts" id="concepts" style="color: inherit; text-decoration: none;">
+					<h2>Concepts</h2>
+				</a>
+				<a href="#pipe" id="pipe" style="color: inherit; text-decoration: none;">
+					<h3>Pipe</h3>
+				</a>
+				<p>A pipe is the central object in plumbing-toolkit, it is created using a <a href="#spring">spring</a> and can be piped into an <a href="#operator">operator</a> or flushed into an <a href="#outlet">outlet</a>.</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> Pipe&lt;T&gt; <span class="hljs-keyword">implements</span> IPipe&lt;T&gt; {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">spring: Spring&lt;T&gt;</span>);
+    pipe&lt;K, R = Pipe&lt;K&gt;&gt;(<span class="hljs-params">operator: Operator&lt;T, K, R&gt;</span>): ReturnType&lt;Operator&lt;T, K, R&gt;&gt;;
+    flush(<span class="hljs-params">outlet: Outlet&lt;T&gt;</span>): (<span class="hljs-params"></span>) =&gt; void;
+    chain(<span class="hljs-params">...operators: Operator&lt;<span class="hljs-built_in">any</span>&gt;[]</span>): any; // The arguments are typed in IPipe&lt;T&gt;
+}</code></pre>
+				<p>A pipe can be created using the pipe() function</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">import</span> { pipe, range } <span class="hljs-keyword">from</span> <span class="hljs-string">"plumbing-toolkit"</span>;
+
+<span class="hljs-keyword">const</span> myPipe = pipe(range(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)); <span class="hljs-comment">// Pipe&lt;number&gt;</span></code></pre>
+				<a href="#spring" id="spring" style="color: inherit; text-decoration: none;">
+					<h3>Spring</h3>
+				</a>
+				<p>A spring is a function that takes an <a href="#outlet">outlet</a> and returns a <a href="#pluck">pluck</a>. When called, the spring emits values into the outlet until it is plucked using the pluck.</p>
+				<p>They typically have the format</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Spring&lt;T&gt; = <span class="hljs-function">(<span class="hljs-params">outlet: Outlet&lt;T&gt;</span>) =&gt;</span> Pluck;
+</code></pre>
+				<p>And usually come as closures like so</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">interval</span>(<span class="hljs-params">ms: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">Spring</span>&lt;<span class="hljs-title">number</span>&gt; </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">outlet: Outlet&lt;<span class="hljs-built_in">number</span>&gt;</span>) =&gt;</span> {
+        <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">const</span> handle = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> outlet.next(i++), ms);
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> clearInterval(handle); <span class="hljs-comment">// return the pluck</span>
+    }
+}</code></pre>
+				<a href="#operator" id="operator" style="color: inherit; text-decoration: none;">
+					<h3>Operator</h3>
+				</a>
+				<p>While springs provide data and pipes transport data, operators are the ones, that actually work (or operate) on the data, for example by filtering, mapping or transforming the data.
+				An operator is usually a function that takes a <a href="#pipe">pipe</a> and returns a pipe. </p>
+				<p>They typically have the format</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Operator&lt;In, Out = In, Returns = IPipe&lt;Out&gt;&gt; = <span class="hljs-function">(<span class="hljs-params">input: IPipe&lt;In&gt;</span>) =&gt;</span> Returns;</code></pre>
+				<p>The most basic operator is an operator that returns a pipe of the same type, like the filter() operator.</p>
+				<p>However in plumbing-toolkit an operator is not limited to returning another pipe, even though that is the common usecase.</p>
+				<p>They are also used to provide endpoints for the pipes. For example the first() operator flushes the pipe it is passed into an outlet and then it returns the first value it receives and plucks the pipe.</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">const</span> firstValue = <span class="hljs-keyword">await</span> pipe(<span class="hljs-keyword">from</span>([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>])).pipe(first())
+<span class="hljs-built_in">console</span>.log(firstValue); <span class="hljs-comment">// foo</span></code></pre>
+				<a href="#outlet" id="outlet" style="color: inherit; text-decoration: none;">
+					<h3>Outlet</h3>
+				</a>
+				<p>An outlet is the receiving end of <a href="#pipe">pipes</a> or <a href="#spring">springs</a> and usually provides three methods: next(), complete() and error().
+				Upon flush, the outlet receives values via next(), until the spring is completed at which point complete() is called. If an error occured anywhere in the chain, it will be passed to error().</p>
+				<p>When the spring or any other outlet above it in the chain is plucked, the outlet will also have the property &quot;plucked&quot; set to true.</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> IOutlet&lt;T&gt; {
+    next(value: T): MaybePromise&lt;<span class="hljs-built_in">void</span>&gt;;
+    error?(error: <span class="hljs-built_in">Error</span>): MaybePromise&lt;<span class="hljs-built_in">void</span>&gt;;
+    complete?(): MaybePromise&lt;<span class="hljs-built_in">void</span>&gt;;
+    pluck?(): MaybePromise&lt;<span class="hljs-built_in">void</span>&gt;;
+    plucked?: <span class="hljs-built_in">boolean</span>;
+}</code></pre>
+				<p>This is the outlet interface, it is implemented by the outlet class that provides guaranteed availability of each of those methods.</p>
+				<p>In day to day business you&#39;ll usually never have to manually instantiate an outlet as most usecases are already wrapped nicely in operators and outlet factory methods.</p>
+				<a href="#pluck" id="pluck" style="color: inherit; text-decoration: none;">
+					<h3>Pluck</h3>
+				</a>
+				<p>A pluck is a simple function that plucks a spring, as in cancels it. It is returned by the spring and passed down the chain.</p>
+				<p>It can be accessed via flushing the pipe into an outlet or piping it into the consume operator</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">const</span> myPipe = pipe(interval(<span class="hljs-number">1000</span>));
+<span class="hljs-keyword">const</span> pluck = myPipe.flush(Outlet.to(<span class="hljs-built_in">console</span>.log)) <span class="hljs-comment">// or myPipe.pipe(consume(console.log))</span>
+setTimeout(pluck, <span class="hljs-number">5000</span>); <span class="hljs-comment">// stop the interval after 5 seconds</span></code></pre>
+				<p>In fact, the consume operator is implemented just like that</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">consume</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">consumer: ConsumerFn&lt;T&gt;</span>): <span class="hljs-title">Operator</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">T</span>, <span class="hljs-title">Pluck</span>&gt;
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">input</span> =&gt;</span> input.flush( Outlet.to(consumer) );
+}</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_bin_pipe_type_gen_.html">"bin/pipe-<wbr>type-<wbr>gen"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_context_.html">"operators/context"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_deltatime_.html">"operators/delta<wbr>Time"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_endpoints_.html">"operators/endpoints"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_filter_.html">"operators/filter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_flatmap_.html">"operators/flat<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_foreach_.html">"operators/for<wbr>Each"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_index_.html">"operators/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_is_.html">"operators/is"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_map_.html">"operators/map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operators_through_.html">"operators/through"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_outlet_.html">"outlet"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_pipe_.html">"pipe"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_pipe_types_.html">"pipe-<wbr>types"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_pressure_.html">"pressure"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_springs_fibonacci_.html">"springs/fibonacci"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_springs_from_.html">"springs/from"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_springs_index_.html">"springs/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_springs_interval_.html">"springs/interval"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_springs_range_.html">"springs/range"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_tank_.html">"tank"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_test_.html">"test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_.html">"utils"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
