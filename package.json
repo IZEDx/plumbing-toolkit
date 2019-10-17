@@ -30,6 +30,7 @@
       "./dist/operators/*"
     ]
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IZEDx/plumbing-toolkit.git"
