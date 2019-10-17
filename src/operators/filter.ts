@@ -1,5 +1,5 @@
 import { MaybePromise, maybeAwait } from "../utils";
-import { through } from "../tools";
+import { through } from ".";
 
 export type PredicateFn<T> = (x: T) => MaybePromise<boolean>;
 
@@ -10,3 +10,4 @@ export function filter<T>(predicate: PredicateFn<T>) {
         : undefined 
     );
 }
+

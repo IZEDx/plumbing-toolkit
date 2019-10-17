@@ -1,5 +1,5 @@
-import { Sink } from "../sink";
-import { immediate } from "../pressure";
+import { Outlet } from "../outlet";
+import { immediate, Pressure } from "../pressure";
 import { Spring } from "../pipe";
 
 function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T>
@@ -11,30 +11,31 @@ function isAsyncIterable<T>(ai: Object): ai is AsyncIterable<T>
  * Creates a [Spring] from [i]
  * @param i 
  */
-export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
+export function from<T>(i: Iterable<T>|AsyncIterable<T>, pressure: Pressure = immediate): Spring<T>
 {
-    return (sink: Sink<T>) => {
+    return (outlet: Outlet<T>) => {
         (async () => {
+            await pressure();
             try {
                 if ( isAsyncIterable<T>(i) ) {
                     for await (const data of i) {
-                        if (sink.plucked) break;
-                        sink.next(data);
-                        await immediate();
+                        if (outlet.plucked) break;
+                        outlet.next(data);
+                        await pressure();
                     }
                 } else {
                     for (const data of i) {
-                        if (sink.plucked) break;
-                        sink.next(data);
-                        await immediate();
+                        if (outlet.plucked) break;
+                        outlet.next(data);
+                        await pressure();
                     }
                 }
-                sink.return();
+                outlet.complete();
             } catch(e) {
-                sink.throw(e);
+                outlet.error(e);
             }
         })();
-        return () => sink.pluck();
+        return () => outlet.pluck();
     }
 }
 
@@ -42,7 +43,7 @@ export function from<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
  * Alias for [from]
  * @param i 
  */
-export function pump<T>(i: Iterable<T>|AsyncIterable<T>): Spring<T>
+export function pump<T>(i: Iterable<T>|AsyncIterable<T>, pressure: Pressure = immediate): Spring<T>
 {
     return from(i);
 }

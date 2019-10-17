@@ -1,12 +1,13 @@
 import { pump } from "./from";
 import { Spring } from "../pipe";
+import { Pressure, immediate } from "../pressure";
 
 /**
  * Creates a [Spring], that emits the fibonacci sequence for the given [iterations]
  * @param steps 
  */
-export function fibonacci(iterations?: number): Spring<number> {
-    return pump(fibonacciGenerator(iterations)); 
+export function fibonacci(iterations?: number, pressure: Pressure = immediate): Spring<number> {
+    return pump(fibonacciGenerator(iterations), pressure); 
 }
 
 function* fibonacciGenerator(iterations?: number) {

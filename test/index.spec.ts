@@ -2,7 +2,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { maybeAwait } from ".";
+import { maybeAwait } from "../src";
 
 describe("maybeAwait", () => {
 

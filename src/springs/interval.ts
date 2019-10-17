@@ -1,10 +1,10 @@
-import { Sink } from "../sink";
+import { Outlet } from "../outlet";
 import { Spring } from "../pipe";
 
 export function interval(ms: number): Spring<number> {
-    return (sink: Sink<number>) => {
+    return (outlet: Outlet<number>) => {
         let i = 0;
-        const handle = setInterval(() => sink.next(i++), ms);
+        const handle = setInterval(() => outlet.next(i++), ms);
         return () => clearInterval(handle);
     }
 }

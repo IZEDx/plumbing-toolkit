@@ -1,12 +1,14 @@
 
-export function immediate<T>() {
+export type Pressure<T = any> = () => Promise<T>
+
+export function immediate() {
     return timeout(0);
 }
 
-export function timeout<T>(ms: number) {
+export function timeout(ms: number) {
     return new Promise<void>( resolve => setTimeout(resolve, ms) );
 }
 
-export function animationFrame<T>() {
+export function animationFrame() {
     return new Promise<number>( resolve => requestAnimationFrame(resolve) );
 }

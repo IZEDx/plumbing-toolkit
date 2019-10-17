@@ -2,23 +2,32 @@
   "name": "plumbing-toolkit",
   "version": "0.7.1",
   "description": "",
+  "source": "src/index.ts",
   "browser": "dist/es5-commonjs/index.js",
   "module": "dist/es5-esm/index.js",
   "main": "dist/es2015-commonjs/index.js",
   "es2015": "dist/es2015-esm/index.js",
   "esnext": "dist/esnext/index.js",
   "types": "types/index.d.ts",
+  "bin": {
+    "pipe-type-gen": "dist/es2015-commonjs/bin/pipe-type-gen.js"
+  },
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "build-es5-commonjs": "npm run build -- --target es5 --module commonjs --outDir dist/es5-commonjs",
-    "build-es5-esm": "npm run build -- --target es5 --module es6 --outDir dist/es5-esm",
-    "build-es2015-commonjs": "npm run build",
-    "build-es2015-esm": "npm run build -- --target es2015 --module es6 --outDir dist/es2015-esm",
-    "build-esnext": "npm run build -- --target esnext --module esnext --outDir dist/esnext",
-    "build-all": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
-    "watch": "npm run build -- --watch",
-    "deploy": "npm run build-all && npm publish",
-    "test": "mocha -r ts-node/register ./**/*.spec.ts"
+    "build-es5-commonjs": "npx tsc -- --target es5 --module commonjs --outDir dist/es5-commonjs",
+    "build-es5-esm": "npx tsc-- --target es5 --module es6 --outDir dist/es5-esm",
+    "build-es2015-commonjs": "npx tsc",
+    "build-es2015-esm": "npx tsc-- --target es2015 --module es6 --outDir dist/es2015-esm",
+    "build-esnext": "npx tsc-- --target esnext --module esnext --outDir dist/esnext",
+    "build": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
+    "watch": "npx tsc-- --watch",
+    "deploy": "npm run build && npm publish",
+    "test": "npx mocha -r ts-node/register ./**/*.spec.ts"
+  },
+  "baseUrl": ".",
+  "paths": {
+    "operators/*": [
+      "./dist/operators/*"
+    ]
   },
   "repository": {
     "type": "git",
@@ -31,14 +40,21 @@
   },
   "homepage": "https://github.com/IZEDx/plumbing-toolkit#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "@types/yargs": "^13.0.3",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "ts-node": "^6.2.0",
-    "typescript": "^3.4.5"
+    "mocha": "^6.2.1",
+    "pegjs": "^0.10.0",
+    "ts-node": "^8.4.1",
+    "ts-pegjs": "^0.2.6",
+    "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@types/node": "^8.10.48"
+    "@types/node": "^12.7.12",
+    "chalk": "^2.4.2",
+    "change-case": "^3.1.0",
+    "pretty-json-stringify": "0.0.2",
+    "yargs": "^14.2.0"
   }
 }

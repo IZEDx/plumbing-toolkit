@@ -1,8 +1,8 @@
 import { Optional } from "./utils";
-import { Sink } from "./sink";
+import { Outlet } from "./outlet";
 
 // TODO: pluck correctly
-export class Tank<T> extends Sink<T> {
+export class Tank<T> extends Outlet<T> {
     private _waitingNext: ((data: Optional<IteratorResult<T>>) => void)[] = [];
     private _waitingError: ((err: Error) => void)[] = [];
     private _resultQueue: Optional<IteratorResult<T>>[] = [];
@@ -34,7 +34,7 @@ export class Tank<T> extends Sink<T> {
                     this._waitingError = [];
                 }
             },
-            return: () => {
+            complete: () => {
                 if (!this._started) this._started = true;
                 if (this._done) return;
                 this._done = true;
@@ -45,7 +45,7 @@ export class Tank<T> extends Sink<T> {
                     this._waitingNext.forEach(fn => fn({done: true}));
                 }
             },
-            throw: (err: Error) => {
+            error: (err: Error) => {
                 if (!this._started) this._started = true;
                 if (this._done) return;
                 this._done = true;

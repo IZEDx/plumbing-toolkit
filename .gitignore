@@ -7,3 +7,4 @@ ts-node-*/
 coverage/
 dist/
 types/
+.rts2*

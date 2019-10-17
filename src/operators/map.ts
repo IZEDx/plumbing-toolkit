@@ -1,5 +1,5 @@
 import { MaybePromise, maybeAwait } from "../utils";
-import { through } from "../tools";
+import { through } from ".";
 
 export type MappingFn<T, K> = (x: T) => MaybePromise<K>;
 
