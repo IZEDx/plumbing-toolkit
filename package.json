@@ -1,6 +1,6 @@
 {
   "name": "plumbing-toolkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "source": "src/index.ts",
   "browser": "dist/es5-commonjs/index.js",
@@ -30,7 +30,9 @@
       "./dist/operators/*"
     ]
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IZEDx/plumbing-toolkit.git"
