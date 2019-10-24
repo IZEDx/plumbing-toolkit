@@ -1,6 +1,6 @@
 {
   "name": "plumbing-toolkit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "source": "src/index.ts",
   "browser": "dist/es5-commonjs/src/index.js",
