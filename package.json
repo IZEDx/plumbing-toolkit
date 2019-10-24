@@ -3,12 +3,12 @@
   "version": "1.0.4",
   "description": "",
   "source": "src/index.ts",
-  "browser": "dist/es5-commonjs/index.js",
-  "module": "dist/es5-esm/index.js",
-  "main": "dist/es2015-commonjs/index.js",
-  "es2015": "dist/es2015-esm/index.js",
-  "esnext": "dist/esnext/index.js",
-  "types": "types/index.d.ts",
+  "browser": "dist/es5-commonjs/src/index.js",
+  "module": "dist/es5-esm/src/index.js",
+  "main": "dist/es2015-commonjs/src/index.js",
+  "es2015": "dist/es2015-esm/src/index.js",
+  "esnext": "dist/esnext/src/index.js",
+  "types": "types/src/index.d.ts",
   "bin": {
     "pipe-type-gen": "dist/es2015-commonjs/src/bin/pipe-type-gen.js"
   },
@@ -29,9 +29,6 @@
     "operators/*": [
       "./dist/operators/*"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
