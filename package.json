@@ -10,7 +10,7 @@
   "esnext": "dist/esnext/index.js",
   "types": "types/index.d.ts",
   "bin": {
-    "pipe-type-gen": "dist/es2015-commonjs/bin/pipe-type-gen.js"
+    "pipe-type-gen": "dist/es2015-commonjs/src/bin/pipe-type-gen.js"
   },
   "scripts": {
     "build-es5-commonjs": "npx tsc --target es5 --module commonjs --outDir dist/es5-commonjs",
