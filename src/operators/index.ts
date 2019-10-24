@@ -6,6 +6,7 @@ export * from "./map";
 // Filters
 export * from "./filter";
 export * from "./is";
+export * from "./select";
 
 // Extra Utils
 export * from "./context";
@@ -16,3 +17,4 @@ export * from "./catch";
 
 // Timing
 export * from "./deltaTime";
+export * from "./parallel";
