@@ -47,7 +47,11 @@ export class Outlet<T> implements IOutlet<T> {
 
     next(value: T): MaybePromise<void> {
         if (!this._completed && !this._plucked) {
-            return this.outlet.next(value);
+            try {
+                return this.outlet.next(value);
+            } catch(e) {
+                this.error(e);
+            }
         }
     }
 
@@ -59,8 +63,12 @@ export class Outlet<T> implements IOutlet<T> {
     }
 
     error(error: Error): MaybePromise<void> {
-        if (this.outlet.error && !this._plucked && !this._completed) {
-            return this.outlet.error(error);
+        if (!this._plucked && !this._completed) {
+            if (this.outlet.error) {
+                return this.outlet.error(error);
+            } else {
+                throw error;
+            }
         }
     }
 

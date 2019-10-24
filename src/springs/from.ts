@@ -20,13 +20,13 @@ export function from<T>(i: Iterable<T>|AsyncIterable<T>, pressure: Pressure = im
                 if ( isAsyncIterable<T>(i) ) {
                     for await (const data of i) {
                         if (outlet.plucked) break;
-                        outlet.next(data);
+                        await outlet.next(data);
                         await pressure();
                     }
                 } else {
                     for (const data of i) {
                         if (outlet.plucked) break;
-                        outlet.next(data);
+                        await outlet.next(data);
                         await pressure();
                     }
                 }

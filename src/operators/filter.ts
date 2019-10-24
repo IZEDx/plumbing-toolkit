@@ -4,9 +4,9 @@ import { through } from ".";
 export type PredicateFn<T> = (x: T) => MaybePromise<boolean>;
 
 export function filter<T>(predicate: PredicateFn<T>) {
-    return through<T, T>( async (value, sink) => 
+    return through<T, T>( async (value, outlet) => 
         ( await maybeAwait( predicate(value) ) ) 
-        ? sink.next(value) 
+        ? outlet.next(value) 
         : undefined 
     );
 }
