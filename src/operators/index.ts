@@ -12,6 +12,7 @@ export * from "./context";
 export * from "./endpoints";
 export * from "./forEach";
 export * from "./through";
+export * from "./catch";
 
 // Timing
 export * from "./deltaTime";

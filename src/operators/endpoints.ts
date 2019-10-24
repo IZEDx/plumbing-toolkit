@@ -46,9 +46,9 @@ export function collect<T>(): Operator<T, T, Promise<T[]>>
  * Flushes the stream into a [consumer]
  * @param fn 
  */
-export function consume<T>(consumer: ConsumerFn<T>): Operator<T, T, Pluck>
+export function consume<T>(consumer: ConsumerFn<T>, err?: (err: any) => MaybePromise<void>): Operator<T, T, Pluck>
 {
-    return input => input.flush( Outlet.to(consumer) );
+    return input => input.flush( Outlet.to(consumer, err) );
 }
 
 /**

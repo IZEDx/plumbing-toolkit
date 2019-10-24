@@ -16,14 +16,18 @@ export class Outlet<T> implements IOutlet<T> {
     get completed() { return this._completed; }
     
     constructor(private outlet: IOutlet<T>) {
+        this.next = this.next.bind(this);
+        this.complete = this.complete.bind(this);
+        this.error = this.error.bind(this);
+        this.pluck = this.pluck.bind(this);
     }
 
     
-    static to<T>(next: (value: T) => void, err?: (err: Error) => void): Outlet<T> {
+    static to<T>(next: (value: T) => MaybePromise<void>, err?: (err: Error) => MaybePromise<void>): Outlet<T> {
         return new Outlet({ next, error: err });
     }
 
-    static throughTo<T, K>(fn: (value: T, outlet: Outlet<K>) => void, outlet: Outlet<K>): Outlet<T> {
+    static throughTo<T, K>(fn: (value: T, outlet: Outlet<K>) => MaybePromise<void>, outlet: Outlet<K>): Outlet<T> {
         return new Outlet<T>({
             async next(value: T) {
                 return fn(value, outlet);
