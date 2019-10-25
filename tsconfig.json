@@ -9,7 +9,7 @@
         "experimentalDecorators": true,
         "removeComments": true,
         "strict": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "suppressImplicitAnyIndexErrors": true,
         "declaration": true,
         "declarationDir": "types",
