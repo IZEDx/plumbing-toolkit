@@ -27,19 +27,15 @@ export function collector<T>(): Operator<T, T, AsyncIterable<T>>
  */
 export function collect<T>(): Operator<T, T, Promise<T[]>>
 {
-    return input => new Promise(async (resolve, reject) => {
+    return async input => {
         const it = input.pipe( collector() );
         const collection: T[] = [];
 
-        try {
-            for await (const value of it) {
-                collection.push(value);
-            }    
-            resolve(collection);
-        } catch(err) {
-            reject(err);
-        }
-    });
+        for await (const value of it) {
+            collection.push(value);
+        }    
+        return collection;
+    };
 }
 
 /**

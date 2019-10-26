@@ -3,8 +3,8 @@ import { through } from "./through";
 
 export function forEach<T>(consumer: (value: T) => any): Operator<T, T>
 {
-    return through((value, sink) => {
+    return through((value, outlet) => {
         consumer(value);
-        return sink.next(value);
+        return outlet.next(value);
     });
 }
