@@ -13,8 +13,9 @@ export * from "./context";
 export * from "./endpoints";
 export * from "./forEach";
 export * from "./through";
-export * from "./catch";
+export * from "./error";
 
 // Timing
 export * from "./deltaTime";
 export * from "./parallel";
+export * from "./pressurize";
