@@ -16,7 +16,7 @@ export function collector<T>(): Operator<T, T, AsyncIterable<T>>
             {
                 const tank = new Tank<T>();
                 input.flush(tank);
-                return { next: () => tank.pump() }
+                return { next: () => tank.drain() }
             }
         }
     };

@@ -1,8 +1,8 @@
 import { Optional } from "./utils";
-import { Outlet } from "./outlet";
+import { Outlet, IDrainable } from "./outlet";
 
 // TODO: pluck correctly
-export class Tank<T> extends Outlet<T> {
+export class Tank<T> extends Outlet<T> implements IDrainable<T> {
     private _waitingNext: ((data: Optional<IteratorResult<T>>) => void)[] = [];
     private _waitingError: ((err: Error) => void)[] = [];
     private _resultQueue: Optional<IteratorResult<T>>[] = [];
@@ -55,7 +55,12 @@ export class Tank<T> extends Outlet<T> {
         });
     }
 
-    pump(): Promise<IteratorResult<T>> {
+    [Symbol.asyncIterator]()
+    {
+        return { next: () => this.drain() }
+    }
+
+    drain(): Promise<IteratorResult<T>> {
         return new Promise<IteratorResult<T>>((resolve, reject) => {
             if (this._resultQueue.length !== 0) {
                 resolve(this._resultQueue[0] as IteratorResult<T>);
