@@ -8,6 +8,10 @@ export interface IOutlet<T> {
     plucked?: boolean;
 }
 
+export interface IDrainable<T> extends AsyncIterable<T> {
+    drain(): Promise<IteratorResult<T>>;
+}
+
 export class Outlet<T> implements IOutlet<T> {
     private _plucked = false;
     private _completed = false;
