@@ -17,5 +17,5 @@ export * from "./error";
 
 // Timing
 export * from "./deltaTime";
-export * from "./parallel";
+export * from "./defer";
 export * from "./pressurize";
