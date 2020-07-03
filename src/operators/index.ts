@@ -19,3 +19,5 @@ export * from "./error";
 export * from "./deltaTime";
 export * from "./defer";
 export * from "./pressurize";
+export * from "./sample";
+export * from "./debounce";

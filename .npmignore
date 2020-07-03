@@ -11,6 +11,5 @@ ts-node-*/
 .cache/
 .nyc_output
 src/
-dist/**/*.map
 dist/**/*.spec.js
 types/**/*.spec.d.ts

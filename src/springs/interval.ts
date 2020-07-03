@@ -11,6 +11,7 @@ export function interval(ms: number): Spring<number> {
                 await outlet.next(i);
                 await timeout(ms);
             }
+            outlet.complete();
         })();
         return () => stop = true;
     }

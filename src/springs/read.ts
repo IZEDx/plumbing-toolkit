@@ -24,6 +24,7 @@ export function read<T>(stream: Readable): Spring<T> {
         })();
 
         return () => {
+            outlet.pluck();
             stream.destroy();
         }
     }
