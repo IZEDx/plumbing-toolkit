@@ -1,5 +1,4 @@
 .gitignore
-tsconfig.json
 .travis.yml
 tests/
 docs/
@@ -11,5 +10,8 @@ ts-node-*/
 .cache/
 .nyc_output
 src/
+.fusebox/
 dist/**/*.spec.js
 types/**/*.spec.d.ts
+fuse.js
+test/

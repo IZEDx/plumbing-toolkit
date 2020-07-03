@@ -8,3 +8,4 @@ coverage/
 dist/
 types/
 .rts2*
+.fusebox

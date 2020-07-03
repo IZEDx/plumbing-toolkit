@@ -1,25 +1,19 @@
 {
   "name": "plumbing-toolkit",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "",
   "source": "src/index.ts",
-  "browser": "dist/es5-commonjs/src/index.js",
-  "module": "dist/es5-esm/src/index.js",
-  "main": "dist/es2015-commonjs/src/index.js",
-  "es2015": "dist/es2015-esm/src/index.js",
-  "esnext": "dist/esnext/src/index.js",
-  "types": "types/src/index.d.ts",
+  "main": "dist/plumbing-toolkit.js",
+  "ts:main": "src/index.ts",
+  "typings": "src/index.ts",
+  "types": "src/index.ts",
   "bin": {
     "pipe-type-gen": "dist/es2015-commonjs/src/bin/pipe-type-gen.js"
   },
   "scripts": {
-    "build-es5-commonjs": "npx tsc --target es5 --module commonjs --outDir dist/es5-commonjs",
-    "build-es5-esm": "npx tsc --target es5 --module es6 --outDir dist/es5-esm",
-    "build-es2015-commonjs": "npx tsc",
-    "build-es2015-esm": "npx tsc --target es2015 --module es6 --outDir dist/es2015-esm",
-    "build-esnext": "npx tsc --target esnext --module esnext --outDir dist/esnext",
-    "build": "rm -rf dist && npm run build-es5-commonjs && npm run build-es5-esm && npm run build-es2015-commonjs && npm run build-es2015-esm && npm run build-esnext",
-    "watch": "npx tsc --watch",
+    "clean": "node fuse clean",
+    "build": "node fuse dist",
+    "dev": "node fuse",
     "deploy": "npm run build && npm publish",
     "test": "npx mocha -r ts-node/register ./**/*.spec.ts",
     "docs": "npx typedoc --out docs src"
@@ -44,12 +38,13 @@
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
+    "fuse-box": "^3.7.1",
     "mocha": "^6.2.1",
-    "pegjs": "^0.10.0",
+    "terser": "^4.6.3",
     "ts-node": "^8.4.1",
-    "ts-pegjs": "^0.2.6",
     "typedoc": "^0.15.0",
-    "typescript": "^3.7.1-rc"
+    "typescript": "^3.7.5",
+    "uglify-js": "^3.7.5"
   },
   "dependencies": {
     "@types/node": "^12.7.12"
